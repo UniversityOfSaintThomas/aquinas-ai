@@ -3,7 +3,7 @@ name: "2. Deploy SageMaker Fine-Tuning (Optional)"
 on:
   push:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'infrastructure/lib/sagemaker-fine-tuning-stack.ts'
@@ -16,7 +16,7 @@ on:
       - '.github/workflows/sagemaker-fine-tuning.yml'
   pull_request:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'infrastructure/lib/sagemaker-fine-tuning-stack.ts'
@@ -136,7 +136,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
 
     permissions:
       id-token: write
@@ -225,7 +225,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
 
     permissions:
       id-token: write
@@ -303,7 +303,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
 
     # Use OIDC for secure AWS authentication
     permissions:

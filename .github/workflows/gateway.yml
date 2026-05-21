@@ -3,7 +3,7 @@ name: "5. Deploy Gateway (Lambda Tools)"
 on:
   push:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'infrastructure/lib/gateway-stack.ts'
@@ -12,7 +12,7 @@ on:
       - '.github/workflows/gateway.yml'
   pull_request:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'infrastructure/lib/gateway-stack.ts'
@@ -75,7 +75,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     env:
       # Environment-scoped configuration
@@ -119,7 +119,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     env:
       # Environment-scoped configuration
@@ -161,7 +161,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     env:
       # Environment-scoped configuration
@@ -220,7 +220,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write
@@ -293,7 +293,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write
@@ -393,7 +393,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write

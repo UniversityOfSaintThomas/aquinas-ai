@@ -3,7 +3,7 @@ name: "3. Deploy Inference API (AgentCore Runtime)"
 on:
   push:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'backend/src/apis/inference_api/**'
@@ -17,7 +17,7 @@ on:
       - '.github/workflows/inference-api.yml'
   pull_request:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'backend/src/apis/inference_api/**'
@@ -132,7 +132,7 @@ jobs:
     if: github.event_name != 'pull_request'
     
     # Select environment to get project prefix for image naming
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     outputs:
       image-tag: ${{ steps.set-tag.outputs.IMAGE_TAG }}
@@ -219,7 +219,7 @@ jobs:
     if: ${{ github.event.inputs.skip_tests != 'true' }}
     
     # Select environment to get project prefix for image naming
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     env:
       IMAGE_TAG: ${{ needs.build-docker.outputs.image-tag }}
@@ -275,7 +275,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write
@@ -347,7 +347,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write
@@ -413,7 +413,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write
@@ -478,7 +478,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write

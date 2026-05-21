@@ -15,7 +15,7 @@ name: "2. Deploy MCP Sandbox (S3, CloudFront, Route53)"
 on:
   push:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'infrastructure/lib/mcp-sandbox-stack.ts'
@@ -29,7 +29,7 @@ on:
       - '.github/workflows/mcp-sandbox.yml'
   pull_request:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'infrastructure/lib/mcp-sandbox-stack.ts'
@@ -144,7 +144,7 @@ jobs:
     outputs:
       enabled: ${{ steps.check.outputs.enabled }}
 
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
 
     permissions:
       id-token: write
@@ -233,7 +233,7 @@ jobs:
     needs: synth
     if: ${{ needs.synth.outputs.enabled == 'true' && github.event.inputs.skip_tests != 'true' }}
 
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
 
     permissions:
       id-token: write
@@ -309,7 +309,7 @@ jobs:
       (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
       (github.event_name != 'workflow_dispatch' || github.event.inputs.skip_deploy != 'true')
 
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
 
     permissions:
       id-token: write

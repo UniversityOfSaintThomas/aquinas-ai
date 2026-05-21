@@ -3,7 +3,7 @@ name: "5. Deploy Frontend (CloudFront)"
 on:
   push:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'frontend/**'
@@ -14,7 +14,7 @@ on:
       - '.github/workflows/frontend.yml'
   pull_request:
     branches:
-      - main
+      - pilot-production
       - develop
     paths:
       - 'frontend/**'
@@ -219,7 +219,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write
@@ -290,7 +290,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write
@@ -355,7 +355,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write
@@ -436,7 +436,7 @@ jobs:
     # Select environment based on trigger
     # Manual: workflow_dispatch input
     # Automatic: main → production, develop → development
-    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/main' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/pilot-production' && 'production') || (github.ref == 'refs/heads/develop' && 'development') || 'development' }}
     
     permissions:
       id-token: write
