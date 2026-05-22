@@ -22,7 +22,7 @@ import { ArtifactStateService } from './session/services/artifacts/artifact-stat
   styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('boisestate.ai');
+  protected readonly title = signal('Aquinas AI Pilot');
   protected sidenavService = inject(SidenavService);
   protected headerService = inject(HeaderService);
   private router = inject(Router);
